@@ -41,17 +41,35 @@ form input {
 }
 
 form button {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
   width: 100%;
 }
 
-form button:hover {
+form button,
+.activity-buttons button:first-child {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover,
+.activity-buttons button:first-child:hover {
   background: #0056b3;
+}
+
+.activity-buttons button:last-child {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.activity-buttons button:last-child:hover {
+  background: #c82333;
 }
 
 ul {
@@ -102,5 +120,97 @@ li button:hover {
   li button {
     margin-top: 10px;
     width: auto;
+  }
+}
+
+.activity-item {
+  background: #fff;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  width: calc(100% - 40px);
+  max-width: 1000px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.activity-item.completed {
+  text-decoration: line-through;
+}
+
+.activity-content {
+  display: inline-block;
+  text-align: center;
+}
+
+.activity-buttons {
+  float: right;
+  gap: 10px;
+}
+
+.activity-buttons button {
+  margin-left: 10px;
+}
+
+.input-group {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.input-group input {
+  margin-right: 10px;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.edit-mode {
+  background: #fff;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 40px);
+  max-width: 1000px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 600px) {
+  .activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activity-buttons {
+    float: none;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .input-group {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+    margin-bottom: 5px;
   }
 }

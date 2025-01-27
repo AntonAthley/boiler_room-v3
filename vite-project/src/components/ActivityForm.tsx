@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
-interface Activity {
+// Grundläggande typ för en aktivitet
+export interface Activity {
+  id: string;
   name: string;
   date: string;
   location: string;
+  completed: boolean;
 }
 
 interface ActivityFormProps {
@@ -11,21 +14,24 @@ interface ActivityFormProps {
 }
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ onAddActivity }) => {
-  // State för aktivitetens namn
+  // State för formulärets fält
   const [name, setName] = useState("");
-  // State för aktivitetens datum
   const [date, setDate] = useState("");
-  // State för aktivitetens plats
   const [location, setLocation] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Kontrollera att alla fält är ifyllda
     if (name && date && location) {
-      const newActivity = { name, date, location };
-      // Lägg till den nya aktiviteten
+      // Skapa ny aktivitet med unikt ID
+      const newActivity: Activity = {
+        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        name,
+        date,
+        location,
+        completed: false,
+      };
       onAddActivity(newActivity);
-      // Återställ fälten
+      // Återställ formuläret
       setName("");
       setDate("");
       setLocation("");
